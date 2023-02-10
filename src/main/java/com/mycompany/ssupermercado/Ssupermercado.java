@@ -10,6 +10,8 @@ public static Scanner Scanner = new Scanner(System.in);
  public static int [] Codigo = new int[6];
  public static int [] Descuento = new int[6];
  public static String [] Compra = new String[7];
+  public static int total = 0;
+  public static String nit;
     public static void main(String[] args) {
         
         
@@ -30,8 +32,7 @@ public static Scanner Scanner = new Scanner(System.in);
             System.out.println("1. Agregar nuevos productos");
             System.out.println("2. Agregar cupones de descuento");
             System.out.println("3. Realizar venta");
-            System.out.println("4. Realizar reporte");
-             System.out.println("5. Salir");
+            System.out.println("4. Slir");
             System.out.println("Escriba el numeto correspondiente a la funcion que desea realizar");
          Menu();
          }
@@ -176,18 +177,53 @@ public static Scanner Scanner = new Scanner(System.in);
              String name =Scanner.next();
              System.out.println("Ingrese su nit si no dispone de uno escriba cf");
                String nic =Scanner.next();
-               int total = 0;
+               nit=nic;
+               int operador=0;
+              
                  for (int i = 0; i < Compra.length; i++) {
-                     if (Compra[i]!=null) {    
-                     total =total + precios[Integer.parseInt(Compra[i])];
-                     }
-                     System.out.println("el total es " + total );
-            }       
+                     for (int j = 0; j < precios.length; j++) {
+                     if (Compra[i]!=null&&precios[j]!=0) {
+                        operador=precios[Integer.parseInt(Compra[i])];
+                        total+=operador;
+                                }
+            }}
+            System.out.println("el total es " + total );
+            Factura();
         }
         
          public static void Factura(){
-         
-         
+             System.out.println("si dispone de un codigo de descuento presione 1 para ingresarlo, caso contrario presione 2 para finalizar la compra");
+             int opcion2 =Scanner.nextInt();
+             int des=0;
+             if (opcion2==1) {
+                 System.out.println("ingrese su codigo de descuento");
+                    int opcion3 =Scanner.nextInt();
+                        for (int i = 0; i < Codigo.length; i++) {
+                            if (opcion3==Codigo[i]) {
+                                Descuento[i]=des;
+                                total= total-total*des;
+                                System.out.println("Super-25");
+                                System.out.println("Eliot Ardon");
+                                System.out.println("Nombre de el cliente");
+                                System.out.println("nit:" + nit);
+                                System.out.println("02/10/2005");
+                                System.out.println("lista de productos");
+                                System.out.println("total:"+ total);     
+                            }
+                 }
+                 
+                 
+             }else{
+                                System.out.println("Super-25");
+                                System.out.println("Eliot Ardon");
+                                System.out.println("Nombre de el cliente");
+                                System.out.println("nit:" + nit);
+                                System.out.println("02/10/2005");
+                                System.out.println("lista de productos");
+                                System.out.println("total:"+ total);  
+             
+             
+             }
          
          
          }
